@@ -1,0 +1,59 @@
+.header {
+ padding-top: 20px;
+}
+
+.header__contacts {
+ display: flex;
+ padding-left: 30px;
+ &-city {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  span {
+   color: #ff6900;
+  }
+ }
+ &-time {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  img {
+   margin-left: 5px;
+  }
+ }
+ &-phone {
+   margin-left: 30px;
+  a {
+   text-decoration: none;
+   color: #000000;
+   font-size: 1.8rem;
+   line-height: 1.2;
+   font-weight: 500;
+  }
+  .header__contacts-text {
+   color: #999999;
+   font-weight: 500;
+   font-size: 1.5rem;
+   line-height: 1;
+  }
+ }
+}
+
+.header__login {
+  text-align: right;
+ &-button {
+  display: inline-block;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 100px;
+  padding: 8px 16px;
+  color: #5C6370;
+  cursor: pointer;
+  transition: color .2s linear;
+  &:hover {
+   color: #000000;
+  }
+ }
+}
