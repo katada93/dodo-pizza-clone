@@ -1,20 +1,27 @@
 .header {
  padding-top: 20px;
+ &__logo {
+   svg {
+     width: 100%;
+   }
+ }
 }
 
 .header__contacts {
  display: flex;
- padding-left: 30px;
+ align-items: center;
+ padding: 5px 0 5px 30px;
  &-city {
   font-weight: 500;
   font-size: 1.8rem;
-  line-height: 1.2;
+  line-height: 1.1;
   span {
    color: #ff6900;
   }
  }
  &-time {
   font-size: 1.5rem;
+  line-height: 1;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -28,7 +35,7 @@
    text-decoration: none;
    color: #000000;
    font-size: 1.8rem;
-   line-height: 1.2;
+   line-height: 1;
    font-weight: 500;
   }
   .header__contacts-text {
@@ -123,5 +130,62 @@
   &__link {
     color: #ff6900;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header__contacts {
+    &-city {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    &-time {
+      font-size: 1.3rem;
+    }
+    &-numbers {
+      a {
+        font-size: 1.5rem;
+      }
+    }
+    .header__contacts-text {
+      font-size: 1.3rem;
+    }
+  }
+  .header__login-button {
+    font-size: 1.2rem;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 990px) {
+  .header__contacts-phone {
+    display: none;
+  }
+  .header__contacts {
+    &-city {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+    &-time {
+      font-size: 1.1rem;
+    }
+    &-numbers {
+      a {
+        font-size: 1.3rem;
+      }
+    }
+    .header__contacts-text {
+      font-size: 1.1rem;
+    }
+  }
+  .header__login-button {
+    font-size: 1rem;
+    padding: 4px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header__middle{
+    display: none;
   }
 }

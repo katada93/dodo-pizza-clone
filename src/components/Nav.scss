@@ -141,3 +141,23 @@
 		opacity: .2;
 	}
 }
+
+@media (max-width: 1199px) {
+  .nav__link {
+    font-size: 1.2rem;
+  }
+  .cart-button {
+    padding: 6px 18px;
+    font-size: 1.4rem;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 990px) {
+  .cart-button {
+    display: none;
+  }
+  .nav__list{
+    overflow-x: scroll;
+  }
+}

@@ -8,6 +8,7 @@
 }
 
 .slider__dots {
+  z-index: 99999;
   position: absolute;
   bottom: 20px;
   display: flex !important;
@@ -48,4 +49,25 @@
   border-radius: 20px;
   margin: 0 auto;
   cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+  .slider__img {
+    width: 1050px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 990px) {
+  .slider__img {
+    width: 900px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider__img {
+    width: 800px;
+    height: 250px;
+  }
 }

@@ -31,9 +31,9 @@ const Nav = () => {
 
   return (
     <nav className={`nav ${showNav && 'nav--fixed'}`}>
-      <Container>
+      <Container fluid="md">
         <Row className="align-items-center">
-          <Col lg="8">
+          <Col xl="8" lg="7">
             <ul className="nav__list">
               {showNav
                 ? <img onClick={scrollToTop} className="nav-logo" width="30" src={navLogo} alt="Nav Logo" />
@@ -105,7 +105,7 @@ const Nav = () => {
               </li>
             </ul>
           </Col>
-          <Col xl="2" lg={{ offset: 2 }}>
+          <Col xl="4" lg="5" >
             <div className="nav__cart">
               <button onMouseOver={handleShowPopup} onMouseLeave={handleClosePopup} className="cart-button">
                 <span className="cart-button__text">Корзина</span>

@@ -57,9 +57,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Container>
-        <Row>
-          <Col lg="3">
+      <Container fluid="md">
+        <Row className="align-items-center justify-content-md-between">
+          <Col xl="3" lg="3" md="4" sm="4" xs="6">
             <div className="header__logo">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 532.32 97.95">
                 <g>
@@ -93,7 +93,7 @@ const Header = () => {
               </svg>
             </div>
           </Col>
-          <Col lg="6">
+          <Col xl="6" lg="5" md="4" sm="4" className="header__middle">
             <div className="header__contacts">
               <div className="header__contacts-about">
                 <p className="header__contacts-city">Доставка пиццы <span>Грозный</span></p>
@@ -107,7 +107,7 @@ const Header = () => {
               </div>
             </div>
           </Col>
-          <Col lg="3">
+          <Col xl="3" lg="4" md="4" sm="4" xs="6">
             <div className="header__login">
               <button onClick={handleShow} className="header__login-button" type="button">{user || 'Войти'}</button>
               {!user ? null
