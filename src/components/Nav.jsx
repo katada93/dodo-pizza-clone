@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import navLogo from '../assets/img/logo-nav.png'
 import { Link, animateScroll as scroll } from "react-scroll";
 import './Nav.scss'
+import navLogo from '../assets/img/logo-nav.png'
+import emptyCart from '../assets/img/empty-cart.png'
 
 const Nav = () => {
-  const [show, setShow] = useState(false)
+  const [showNav, setShowNav] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+
+  const handleClosePopup = () => setShowPopup(false);
+  const handleShowPopup = () => setShowPopup(true);
 
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -13,9 +18,9 @@ const Nav = () => {
 
   const handleShowLogo = () => {
     if (window.scrollY > 70) {
-      setShow(true)
+      setShowNav(true)
     } else {
-      setShow(false)
+      setShowNav(false)
     }
   }
 
@@ -25,12 +30,12 @@ const Nav = () => {
   }, [])
 
   return (
-    <nav className={`nav ${show && 'nav--fixed'}`}>
+    <nav className={`nav ${showNav && 'nav--fixed'}`}>
       <Container>
         <Row className="align-items-center">
           <Col lg="8">
             <ul className="nav__list">
-              {show
+              {showNav
                 ? <img onClick={scrollToTop} className="nav-logo" width="30" src={navLogo} alt="Nav Logo" />
                 : null}
               <li className="nav__item">
@@ -81,36 +86,42 @@ const Nav = () => {
                 </Link>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">Комбо</a>
+                <span className="nav__link">Комбо</span>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">Другие товары</a>
+                <span className="nav__link">Другие товары</span>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">Акции</a>
+                <span className="nav__link">Акции</span>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">Контакты</a>
+                <span className="nav__link">Контакты</span>
               </li>
               <li className="nav__item">
-                <a href="#" className="nav__link">О нас</a>
+                <span className="nav__link">О нас</span>
               </li>
               <li className="nav__item live-stream">
-                <a href="#" className="nav__link">Прямой эфир</a>
+                <span className="nav__link">Прямой эфир</span>
               </li>
             </ul>
           </Col>
-          <Col lg="2" lg={{ offset: 2 }}>
+          <Col xl="2" lg={{ offset: 2 }}>
             <div className="nav__cart">
-              <button className="cart-button cart-button-hover">
+              <button onMouseOver={handleShowPopup} onMouseLeave={handleClosePopup} className="cart-button">
                 <span className="cart-button__text">Корзина</span>
                 <span className="cart-button__count">
                   <span className="cart-button__number">7</span>
                   <svg className="cart-button__arrow" width="13" height="11" fill="none"><path d="M1 5.483h11m0 0L7.286 1M12 5.483L7.286 10" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
                 </span>
               </button>
-              <div className="nav__cart-modal">
-              </div>
+              {showPopup &&
+                <div className="nav__cart-popup">
+                  <div className="empty-cart">
+                    <img width="200" src={emptyCart} alt="Empty" />
+                    <p className="empty-cart__oops">Ой, пусто!</p>
+                    <p>Мы всегда доставляем бесплатно, но сумма заказа должна быть от 445 ₽</p>
+                  </div>
+                </div>}
             </div>
           </Col>
         </Row>

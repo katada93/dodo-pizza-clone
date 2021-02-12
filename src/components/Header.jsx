@@ -1,9 +1,59 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useRef, useState } from 'react'
+import { Container, Row, Col, Modal } from 'react-bootstrap'
+import { auth } from '../firebase'
 import star from '../assets/img/star.svg'
 import './Header.scss'
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(null)
+
+
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  const register = (e) => {
+    e.preventDefault()
+
+    auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+      .then(userCredential => {
+        alert('Вы зарегистрировались!')
+        handleClose()
+        if (userCredential !== null) {
+          auth.currentUser.sendEmailVerification()
+        }
+      }).catch(err => [
+        alert(err.message)
+      ])
+  }
+
+  const signIn = (e) => {
+    e.preventDefault()
+
+    auth.signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
+      .then(user => {
+        handleClose()
+        unsubscribe()
+      })
+      .catch(err => alert(err.message))
+  }
+
+  const signOut = () => {
+    if (window.confirm('Вы действительно хотите выйти?')) {
+      auth.signOut()
+    }
+  }
+
+  const unsubscribe = auth.onAuthStateChanged(user => {
+    if (user) {
+      setUser(user.email)
+    } else {
+      setUser(null)
+    }
+  })
 
   return (
     <header className="header">
@@ -43,7 +93,7 @@ const Header = () => {
               </svg>
             </div>
           </Col>
-          <Col lg="7">
+          <Col lg="6">
             <div className="header__contacts">
               <div className="header__contacts-about">
                 <p className="header__contacts-city">Доставка пиццы <span>Грозный</span></p>
@@ -57,10 +107,29 @@ const Header = () => {
               </div>
             </div>
           </Col>
-          <Col lg="2">
+          <Col lg="3">
             <div className="header__login">
-              <button className="header__login-button" type="button">Войти</button>
+              <button onClick={handleShow} className="header__login-button" type="button">{user || 'Войти'}</button>
+              {!user ? null
+                : <button onClick={signOut} className="header__login-button" type="button">Выйти</button>}
             </div>
+            <Modal show={showModal} onHide={handleClose}>
+              <div className="signin-modal">
+                <div onClick={handleClose} className="signin-modal__close">
+                  <b>&#10006;</b>
+                </div>
+                <form>
+                  <h2>Вход на сайт</h2>
+                  <input ref={emailRef} type="email" placeholder="Email" />
+                  <input ref={passwordRef} type="password" placeholder="Password" />
+                  <button onClick={signIn} type="submit">Войти</button>
+                  <div>
+                    <span>Первый раз на сайте? </span>
+                    <span onClick={register} className="signin-modal__link">Регистрируйся сейчас!</span>
+                  </div>
+                </form>
+              </div>
+            </Modal>
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Col, Modal } from 'react-bootstrap'
+import { Col, Modal } from 'react-bootstrap'
 import './ProductCard.scss'
 
 const ProductCard = ({ id, name, imageUrl, description, price, types, sizes }) => {

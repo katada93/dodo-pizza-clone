@@ -43,6 +43,7 @@
 .header__login {
   text-align: right;
  &-button {
+  margin-left: 5px;
   display: inline-block;
   border: none;
   font-size: 1.4rem;
@@ -56,4 +57,71 @@
    color: #000000;
   }
  }
+}
+
+.signin-modal {
+  position: fixed;
+  display: flex;
+  width: 650px;
+  padding: 30px 40px;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: #fff;
+  &__close {
+    position: absolute;
+    top: -5px;
+    right: -35px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform .1s linear;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  form {
+    h2 {
+      margin-bottom: 40px;
+      font-size: 36px;
+      font-weight: 500;
+    }
+    input {
+      width: 270px;
+      display: block;
+      padding: 2px 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid rgba(115, 121, 140, 0.32);
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      line-height: 40px;
+      font-weight: 500;
+      outline: none;
+    }
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      outline: none;
+      border: none;
+      border-radius: 9999px;
+      text-align: center;
+      cursor: pointer;
+      width: 200px;
+      font-weight: 500;
+      background-color: #ff6900;
+      color: #ffffff;
+      padding: 10px 24px;
+      font-size: 16px;
+      line-height: 24px;
+      &:hover {
+        background-color: darken(#ff6900, 5%);
+      }
+    }
+  }
+  &__link {
+    color: #ff6900;
+    cursor: pointer;
+  }
 }
