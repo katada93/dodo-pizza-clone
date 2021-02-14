@@ -25,12 +25,12 @@ const Products = ({ sectionId, title, fetch }) => {
         <h1 className="product__title">{title}</h1>
         <Row id={sectionId}>
           {loading ? '...loading' : null}
-          {goods && goods.map(good => {
-            return <ProductCard
+          {goods && goods.map(good => (
+            <ProductCard
               key={good.id}
               {...good}
             />
-          })}
+          ))}
         </Row>
       </Container>
     </div>

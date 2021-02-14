@@ -2,11 +2,19 @@ import React, { useState } from 'react'
 import { Col, Modal } from 'react-bootstrap'
 import './ProductCard.scss'
 
-const ProductCard = ({ id, name, imageUrl, description, price, types, sizes }) => {
-  const [showModal, setShowModal] = useState(false);
+const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, weights }) => {
+  const sizeNames = ['Маленькая', 'Средняя', 'Большая']
+  const typeNames = ['Традиционное', 'Тонкое']
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  const [showModal, setShowModal] = useState(false)
+  const [activeSize, setActiveSize] = useState(0)
+  const [activeType, setActiveType] = useState(0)
+
+  const handleActiveSize = (index) => setActiveSize(index)
+  const handleActivetype = (index) => setActiveType(index)
+
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
 
   const correctPrice = typeof (price) === 'number' ? `${price} ₽` : `от ${price[0]} ₽`
 
@@ -35,20 +43,31 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes }) =
           </div>
           <div className="product-modal__data">
             <h3>{name}</h3>
-            <h5>30 см, традиционное тесто, 610 г</h5>
+            <h5>{sizes && sizes[activeSize]} см, {types && types[activeType]} тесто, {weights && weights[activeSize]} г</h5>
             <p>{description}</p>
             <div className="product-modal__radio">
               <ul>
-                <li className="active">Маленькая</li>
-                <li>Средняя</li>
-                <li>Большая</li>
+                {sizeNames.map((name, ind) => (
+                  <li
+                    key={name}
+                    className={ind === activeSize ? 'active' : ''}
+                    onClick={() => handleActiveSize(ind)}>
+                    {name}
+                  </li>
+                ))}
               </ul>
               <ul>
-                <li className="active">Традиционное</li>
-                <li>Тонкое</li>
+                {typeNames.map((type, ind) => (
+                  <li
+                    key={type}
+                    className={ind === activeType ? 'active' : ''}
+                    onClick={() => handleActivetype(ind)}>
+                    {type}
+                  </li>
+                ))}
               </ul>
             </div>
-            <button className="modal__button">Добавить в корзину за 555 ₽</button>
+            <button className="modal__button">Добавить в корзину за {price[activeSize]} ₽</button>
           </div>
         </div>
       </Modal>

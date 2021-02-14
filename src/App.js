@@ -1,18 +1,18 @@
+import { Route } from 'react-router-dom';
 import Header from './components/Header';
-import Nav from './components/Nav';
-import Products from './components/Products';
-import Slider from './components/Slider';
+import Cart from './pages/Cart';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Nav />
-      <Slider />
-      <Products sectionId="pizzas" title="Пицца" fetch="pizzas" />
-      <Products sectionId="snacks" title="Закуски" fetch="snacks" />
-      <Products sectionId="desserts" title="Десерты" fetch="desserts" />
-      <Products sectionId="drinks" title="Напитки" fetch="drinks" />
+      <Route path="/" exact>
+        <Home />
+      </Route>
+      <Route path="/cart">
+        <Cart />
+      </Route>
     </div>
   );
 }

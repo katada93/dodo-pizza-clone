@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { Link } from 'react-router-dom'
 import './Nav.scss'
 import navLogo from '../assets/img/logo-nav.png'
 import emptyCart from '../assets/img/empty-cart.png'
+import { useRef } from 'react';
 
 const Nav = () => {
+  const refPopup = useRef(null)
   const [showNav, setShowNav] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
 
@@ -24,9 +27,18 @@ const Nav = () => {
     }
   }
 
+  const handleShowCartPopup = (e) => {
+    e.preventDefault()
+    setTimeout(() => (
+      console.log(123)
+    ), 1000)
+  }
+
   useEffect(() => {
     document.addEventListener('scroll', handleShowLogo)
-    return () => document.removeEventListener('scroll', handleShowLogo)
+    return () => {
+      document.removeEventListener('scroll', handleShowLogo)
+    }
   }, [])
 
   return (
@@ -39,7 +51,7 @@ const Nav = () => {
                 ? <img onClick={scrollToTop} className="nav-logo" width="30" src={navLogo} alt="Nav Logo" />
                 : null}
               <li className="nav__item">
-                <Link
+                <ScrollLink
                   to="pizzas"
                   smooth={true}
                   activeClass="active"
@@ -48,10 +60,10 @@ const Nav = () => {
                   href="#"
                   className="nav__link">
                   Пицца
-                </Link>
+                </ScrollLink>
               </li>
               <li className="nav__item">
-                <Link
+                <ScrollLink
                   to="snacks"
                   smooth={true}
                   activeClass="active"
@@ -60,10 +72,10 @@ const Nav = () => {
                   href="#"
                   className="nav__link">
                   Закуски
-                </Link>
+                </ScrollLink>
               </li>
               <li className="nav__item">
-                <Link
+                <ScrollLink
                   to="desserts"
                   smooth={true}
                   activeClass="active"
@@ -72,10 +84,10 @@ const Nav = () => {
                   href="#"
                   className="nav__link">
                   Десерты
-                </Link>
+                </ScrollLink>
               </li>
               <li className="nav__item">
-                <Link
+                <ScrollLink
                   to="drinks"
                   smooth={true}
                   activeClass="active"
@@ -83,7 +95,7 @@ const Nav = () => {
                   href="#"
                   className="nav__link">
                   Напитки
-                </Link>
+                </ScrollLink>
               </li>
               <li className="nav__item">
                 <span className="nav__link">Комбо</span>
@@ -107,15 +119,17 @@ const Nav = () => {
           </Col>
           <Col xl="4" lg="5" >
             <div className="nav__cart">
-              <button onMouseOver={handleShowPopup} onMouseLeave={handleClosePopup} className="cart-button">
-                <span className="cart-button__text">Корзина</span>
-                <span className="cart-button__count">
-                  <span className="cart-button__number">7</span>
-                  <svg className="cart-button__arrow" width="13" height="11" fill="none"><path d="M1 5.483h11m0 0L7.286 1M12 5.483L7.286 10" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
-                </span>
-              </button>
+              <Link to="/cart">
+                <button onMouseEnter={handleShowPopup} onMouseLeave={handleShowCartPopup} className="cart-button">
+                  <span className="cart-button__text">Корзина</span>
+                  <span className="cart-button__count">
+                    <span className="cart-button__number">7</span>
+                    <svg className="cart-button__arrow" width="13" height="11" fill="none"><path d="M1 5.483h11m0 0L7.286 1M12 5.483L7.286 10" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+                  </span>
+                </button>
+              </Link>
               {showPopup &&
-                <div className="nav__cart-popup">
+                <div ref={refPopup} onMouseLeave={handleClosePopup} className="nav__cart-popup">
                   <div className="empty-cart">
                     <img width="200" src={emptyCart} alt="Empty" />
                     <p className="empty-cart__oops">Ой, пусто!</p>

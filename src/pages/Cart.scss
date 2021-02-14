@@ -1,0 +1,129 @@
+.cart-page {
+  padding-top: 50px;
+  h1 {
+    font-size: 36px;
+    line-height: 35px;
+    margin: 50px 0px;
+  }
+  &__items {
+    width: 600px;
+    list-style: none;
+    margin-bottom: 100px;
+  }
+  &__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e2e9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 70px;
+    }
+    &:first-child {
+      border-top: 1px solid #e2e2e9;
+    }
+    &-descr {
+      width: 250px;
+      h3 {
+        font-size: 18px;
+        line-height: 18px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 16px;
+        color: #73798c;
+      }
+    }
+    &-buttons {
+      font: inherit;
+      color: rgb(0, 0, 0);
+      width: 96px;
+      height: 32px;
+      background-color: #f3f3f7;
+      box-sizing: border-box;
+      border-radius: 9999px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        color: #5e6471;
+        font-weight: 400;
+        line-height: 1;
+        margin: 0px;
+        font-size: 20px;
+        line-height: 1;
+        background: none;
+        cursor: pointer;
+        vertical-align: top;
+        padding: 0 8px;
+        border: none;
+        &:hover {
+          font-weight: 700;
+          color: #000;
+        }
+      }
+    }
+    span {
+      font-weight: 500;
+    }
+    &-trash {
+      cursor: pointer;
+    }
+  }
+}
+
+.cart-page__footer {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-back {
+  outline: none;
+  border: none;
+  border-radius: 9999px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #f3f3f7;
+  color: #5c6370;
+  height: 48px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 12px 48px 12px 54px;
+  transition: color .2s linear;
+  &:hover {
+    color: #000;
+  }
+  svg {
+    transform: rotate(180deg);
+    path {
+      stroke: #5c6370;
+    }
+  }
+}
+
+.btn-buy {
+  outline: none;
+  border: none;
+  border-radius: 9999px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #ff6900;
+  color: #ffffff;
+  height: 48px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 12px 54px 12px 48px;
+  transition: background-color .2s linear;
+  &:hover {
+    background-color: darken(#ff6900, 10%);
+  }
+  svg {
+    path {
+      stroke: #ffffff;
+    }
+  }
+}
