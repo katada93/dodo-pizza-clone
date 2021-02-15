@@ -143,9 +143,6 @@
 }
 
 @media (max-width: 1199px) {
-  .nav__link {
-    font-size: 1.2rem;
-  }
   .cart-button {
     padding: 6px 18px;
     font-size: 1.4rem;
@@ -153,7 +150,7 @@
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 992px) {
   .cart-button {
     display: none;
   }

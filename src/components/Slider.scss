@@ -60,14 +60,28 @@
 
 @media (max-width: 990px) {
   .slider__img {
-    width: 900px;
+    width: 850px;
     height: 300px;
   }
 }
 
 @media (max-width: 768px) {
   .slider__img {
-    width: 800px;
+    width: 700px;
     height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider__img {
+    width: 600px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 400px) {
+  .slider__img {
+    width: 500px;
+    height: 180px;
   }
 }

@@ -60,7 +60,7 @@ const Header = () => {
     <header className="header">
       <Container fluid="md">
         <Row className="align-items-center justify-content-md-between">
-          <Col xl="3" lg="3" md="4" sm="4" xs="6">
+          <Col xl="3" lg="3" md="4" sm="5" xs="5">
             <Link to="/">
               <div className="header__logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 532.32 97.95">
@@ -96,7 +96,7 @@ const Header = () => {
               </div>
             </Link>
           </Col>
-          <Col xl="6" lg="5" md="4" sm="4" className="header__middle">
+          <Col xl="6" lg="5" md="4" className="header__middle">
             <div className="header__contacts">
               <div className="header__contacts-about">
                 <p className="header__contacts-city">Доставка пиццы <span>Грозный</span></p>
@@ -110,7 +110,7 @@ const Header = () => {
               </div>
             </div>
           </Col>
-          <Col xl="3" lg="4" md="4" sm="4" xs="6">
+          <Col xl="3" lg="4" md="4" sm="7" xs="7">
             <div className="header__login">
               <button onClick={handleShow} className="header__login-button" type="button">{user || 'Войти'}</button>
               {!user ? null

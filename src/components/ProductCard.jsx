@@ -19,18 +19,20 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
   const correctPrice = typeof (price) === 'number' ? `${price} ₽` : `от ${price[0]} ₽`
 
   return (
-    <Col lg={3} md={6} xs={12}>
+    <Col xl={3} lg={4} md={6} xs={12}>
       <div className="product-card">
         <div className="product-card__img">
           <img onClick={handleShow} src={imageUrl} alt={name} />
         </div>
-        <div className="product-card__text">
-          <h3 className="product-card__name">{name}</h3>
-          <p className="product-card__desc">{description}</p>
-        </div>
-        <div className="product-card__footer">
-          <span>{correctPrice}</span>
-          <button onClick={handleShow}>Выбрать</button>
+        <div className="product-card__content">
+          <div className="product-card__text">
+            <h3 className="product-card__name">{name}</h3>
+            <p className="product-card__desc">{description}</p>
+          </div>
+          <div className="product-card__footer">
+            <span>{correctPrice}</span>
+            <button onClick={handleShow}>Выбрать</button>
+          </div>
         </div>
       </div>
       <Modal show={showModal} onHide={handleClose}>

@@ -44,8 +44,8 @@ const Nav = () => {
   return (
     <nav className={`nav ${showNav && 'nav--fixed'}`}>
       <Container fluid="md">
-        <Row className="align-items-center">
-          <Col xl="8" lg="7">
+        <Row className="align-items-center justify-content-between">
+          <Col lg="8">
             <ul className="nav__list">
               {showNav
                 ? <img onClick={scrollToTop} className="nav-logo" width="30" src={navLogo} alt="Nav Logo" />
@@ -117,7 +117,7 @@ const Nav = () => {
               </li>
             </ul>
           </Col>
-          <Col xl="4" lg="5" >
+          <Col lg="4" >
             <div className="nav__cart">
               <Link to="/cart">
                 <button onMouseEnter={handleShowPopup} onMouseLeave={handleShowCartPopup} className="cart-button">

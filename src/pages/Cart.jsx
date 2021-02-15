@@ -7,7 +7,7 @@ const Cart = () => {
     <div className="cart-page">
       <Container>
         <Row className="justify-content-center">
-          <Col xs={8}>
+          <Col lg={8} md={12}>
             <h1>Корзина</h1>
             <ul className="cart-page__items">
               <li className="cart-page__item">

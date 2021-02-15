@@ -21,7 +21,7 @@ const Products = ({ sectionId, title, fetch }) => {
 
   return (
     <div className="product">
-      <Container>
+      <Container fluid="md">
         <h1 className="product__title">{title}</h1>
         <Row id={sectionId}>
           {loading ? '...loading' : null}
