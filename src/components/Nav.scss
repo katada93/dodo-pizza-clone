@@ -10,7 +10,7 @@
  left: 0;
  background-color: #ffffff;
  box-shadow: 0 4px 30px rgba(6, 5, 20, .1);
- z-index: 9999;
+ z-index: 1;
 }
 
 .nav__list {
@@ -118,7 +118,7 @@
  position: absolute;
  z-index: 1;
  left: 8px;
- top: 49%;
+ top: 50%;
  transform: translateY(-50%);
  border-radius: 50%;
  animation: 2s ease-in-out 0s infinite normal none running pulse;
@@ -151,10 +151,29 @@
 }
 
 @media (max-width: 992px) {
+  .nav--fixed {
+    padding: 10px 0;
+  }
   .cart-button {
     display: none;
   }
   .nav__list{
     overflow-x: scroll;
+  }
+
+  .nav__link {
+    &:first-child {
+      padding-left: 24px;
+    }
+  }
+
+  .nav__link {
+    background-color: #f3f3f7;
+    border-radius: 16px;
+    color: #454b54;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 24px;
+    margin: 4px;
   }
 }

@@ -8,8 +8,8 @@ import { setGoods, setLoading } from '../redux/actions/goods'
 
 const Products = ({ sectionId, title, fetch }) => {
   const dispatch = useDispatch()
-  const goods = useSelector((goodsReducer) => goodsReducer.items[fetch])
-  const loading = useSelector((goodsReducer) => goodsReducer.loading)
+  const goods = useSelector(({goods}) => goods.items[fetch])
+  const loading = useSelector(({goods}) => goods.loading)
 
   useEffect(() => {
     axios

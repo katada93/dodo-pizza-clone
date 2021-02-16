@@ -1,8 +1,12 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import './Cart.scss'
 
-const Cart = () => {
+const Cart = (props) => {
+  const cartItems = useSelector(({cart}) => cart.items)
+
   return (
     <div className="cart-page">
       <Container>
@@ -60,11 +64,13 @@ const Cart = () => {
               </li>
             </ul>
             <div className="cart-page__footer">
-              <button type="button" className="btn-back">
-                <svg width="24" height="24" fill="none"><path d="M10 18l6-6-6-6" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                </svg>
+              <Link to="/">
+                <button type="button" className="btn-back">
+                  <svg width="24" height="24" fill="none"><path d="M10 18l6-6-6-6" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  </svg>
                   Вернуться в меню
                 </button>
+              </Link>
               <button type="button" className="btn-buy">
                 Оформить заказ
                   <svg width="24" height="24" fill="none"><path d="M10 18l6-6-6-6" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
