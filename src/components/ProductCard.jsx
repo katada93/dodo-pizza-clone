@@ -29,7 +29,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
       price: isPizza ? price[activeSize] : price,
       type: isPizza ? typeNames[activeType] : null,
       size: isPizza ? sizeNames[activeSize] : null,
-      weight: isPizza ? weights[activeSize] : null
+      sizeNumber: isPizza ? sizes[activeSize] : null
     }
     dispatch(addToCart(obj))
     handleCloseModal()

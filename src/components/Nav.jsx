@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './Nav.scss'
 import navLogo from '../assets/img/logo-nav.png'
 import emptyCart from '../assets/img/empty-cart.png'

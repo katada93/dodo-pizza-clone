@@ -8,7 +8,7 @@ const goodsReducer = (state = initialState, action) => {
     case 'SET_GOODS':
       return {
         ...state,
-        items: { ...state.items, [action.payload.name]: [...action.payload.items] },
+        items: action.payload,
         loading: false,
       }
     case 'SET_LOADING':
