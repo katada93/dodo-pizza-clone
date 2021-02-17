@@ -16,20 +16,21 @@ const Home = () => {
   const { items, loading } = useSelector(({ goods }) => goods)
 
   useEffect(() => {
+    dispatch(setLoading(true))
     axios
       .get('/db.json')
       .then(({ data }) => {
         dispatch(setGoods(data))
       })
-  }, [])
+  }, [dispatch])
   return (
     <div className="home-page">
       <Nav />
       <Slider />
-      <Products sectionId="pizzas" title="Пицца" items={items.pizzas} />
-      <Products sectionId="snacks" title="Закуски" items={items.snacks} />
-      <Products sectionId="desserts" title="Десерты" items={items.desserts} />
-      <Products sectionId="drinks" title="Напитки" items={items.drinks} />
+      <Products sectionId="pizzas" title="Пицца" items={items.pizzas} loading={loading} />
+      <Products sectionId="snacks" title="Закуски" items={items.snacks} loading={loading} />
+      <Products sectionId="desserts" title="Десерты" items={items.desserts} loading={loading} />
+      <Products sectionId="drinks" title="Напитки" items={items.drinks} loading={loading} />
       <Link to="/cart" className="mobile-cart-button">
         <span className="mobile-button-counter">{totalCount}</span>
         <img src={cartButton} alt="Cart button" />

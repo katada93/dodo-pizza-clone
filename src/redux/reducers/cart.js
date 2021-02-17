@@ -104,7 +104,7 @@ const cartReducer = produce((draft, action) => {
         draft.totalCount -= action.payload.count
         draft.totalPrice -= action.payload.totalPrice
       }
-
+      break
     }
   }
 }, initialState)

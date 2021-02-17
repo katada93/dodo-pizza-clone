@@ -30,18 +30,20 @@ const Cart = () => {
         <Row className="justify-content-center">
           <Col lg={8} md={12}>
             <h1>Корзина</h1>
-            <ul className="cart-page__items">
-              {addedItems.map((item, ind) => (
-                <CartItem
-                  key={ind} {...item.item}
-                  count={item.count}
-                  totalPrice={item.price}
-                  plusItem={onPlusItem}
-                  minusItem={onMinusItem}
-                  removeItem={onRemoveItem} />
-              ))}
-              <div className="cart-page-sum">Сумма заказа:	<span>{totalPrice} ₽</span></div>
-            </ul>
+            {totalPrice === 0
+              ? <h3 className="empty-cart-text">Добавьте что-нибудь из меню</h3>
+              : <ul className="cart-page__items">
+                {addedItems.map((item, ind) => (
+                  <CartItem
+                    key={ind} {...item.item}
+                    count={item.count}
+                    totalPrice={item.price}
+                    plusItem={onPlusItem}
+                    minusItem={onMinusItem}
+                    removeItem={onRemoveItem} />
+                ))}
+                <div className="cart-page-sum">Сумма заказа:	<span>{totalPrice} ₽</span></div>
+              </ul>}
             <div className="cart-page__footer">
               <Link to="/">
                 <button type="button" className="btn-back">

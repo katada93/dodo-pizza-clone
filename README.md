@@ -1,3 +1,3 @@
 # Dodo pizza Clone
 
-[Сайт проекта](https://github.com/facebook/create-react-app).
+[Сайт проекта](https://dodo-pizza-f23a3.web.app/)
