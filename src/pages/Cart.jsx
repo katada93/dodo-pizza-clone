@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './Cart.scss'
 import CartItem from '../components/CartItem'
-import { minusCartItem, plusCartItem } from '../redux/actions/cart'
+import { minusCartItem, plusCartItem, removeCartItem } from '../redux/actions/cart'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -20,6 +20,10 @@ const Cart = () => {
     dispatch(minusCartItem(item))
   }
 
+  const onRemoveItem = (item) => {
+    dispatch(removeCartItem(item))
+  }
+
   return (
     <div className="cart-page">
       <Container>
@@ -33,7 +37,8 @@ const Cart = () => {
                   count={item.count}
                   totalPrice={item.price}
                   plusItem={onPlusItem}
-                  minusItem={onMinusItem} />
+                  minusItem={onMinusItem}
+                  removeItem={onRemoveItem} />
               ))}
               <div className="cart-page-sum">Сумма заказа:	<span>{totalPrice} ₽</span></div>
             </ul>

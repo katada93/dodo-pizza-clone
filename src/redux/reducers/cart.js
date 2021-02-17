@@ -91,7 +91,21 @@ const cartReducer = produce((draft, action) => {
       }
       break
     }
+    case 'REMOVE_CART_ITEM': {
+      const isPizza = action.payload.size !== null
 
+      if (!isPizza) {
+        draft.totalCount -= action.payload.count
+        draft.totalPrice -= action.payload.totalPrice
+        delete draft.items[action.payload.id]
+      } else {
+        const ind = draft.items[action.payload.id].findIndex(x => x.item.size === action.payload.size && x.item.type === action.payload.type)
+        draft.items[action.payload.id].splice(ind, 1)
+        draft.totalCount -= action.payload.count
+        draft.totalPrice -= action.payload.totalPrice
+      }
+
+    }
   }
 }, initialState)
 
