@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './Cart.scss'
 
-const Cart = (props) => {
-  const cartItems = useSelector(({cart}) => cart.items)
+const Cart = () => {
+  const totalPrice = useSelector(({ cart }) => cart.totalPrice)
 
   return (
     <div className="cart-page">
@@ -30,38 +30,7 @@ const Cart = (props) => {
                   <svg width="20" height="20" fill="none"><path d="M14.75 6h-9.5l.66 9.805c.061 1.013.598 1.695 1.489 1.695H12.6c.89 0 1.412-.682 1.49-1.695L14.75 6z" fill="#373536"></path><path d="M13.85 3.007H6.196C4.984 2.887 5.021 4.365 5 5h9.992c.024-.62.07-1.873-1.142-1.993z" fill="#373535"></path></svg>
                 </div>
               </li>
-              <li className="cart-page__item">
-                <img src="https://dodopizza-a.akamaihd.net/static/Img/Products/d13580ce1bbc42e997ba4296ed7b69a1_146x146.jpeg" alt="Cart item" />
-                <div className="cart-page__item-descr">
-                  <h3>Цыпленок блю чиз</h3>
-                  <p>Средняя 30 см, традиционное тесто</p>
-                </div>
-                <div className="cart-page__item-buttons">
-                  <button className="cart-page__minus-btn">-</button>
-                  <span className="cart-page__count">1</span>
-                  <button className="cart-page__plus-btn">+</button>
-                </div>
-                <span className="cart-page__item-price">595 ₽</span>
-                <div className="cart-page__item-trash">
-                  <svg width="20" height="20" fill="none"><path d="M14.75 6h-9.5l.66 9.805c.061 1.013.598 1.695 1.489 1.695H12.6c.89 0 1.412-.682 1.49-1.695L14.75 6z" fill="#373536"></path><path d="M13.85 3.007H6.196C4.984 2.887 5.021 4.365 5 5h9.992c.024-.62.07-1.873-1.142-1.993z" fill="#373535"></path></svg>
-                </div>
-              </li>
-              <li className="cart-page__item">
-                <img src="https://dodopizza-a.akamaihd.net/static/Img/Products/d13580ce1bbc42e997ba4296ed7b69a1_146x146.jpeg" alt="Cart item" />
-                <div className="cart-page__item-descr">
-                  <h3>Цыпленок блю чиз</h3>
-                  <p>Средняя 30 см, традиционное тесто</p>
-                </div>
-                <div className="cart-page__item-buttons">
-                  <button className="cart-page__minus-btn">-</button>
-                  <span className="cart-page__count">1</span>
-                  <button className="cart-page__plus-btn">+</button>
-                </div>
-                <span className="cart-page__item-price">595 ₽</span>
-                <div className="cart-page__item-trash">
-                  <svg width="20" height="20" fill="none"><path d="M14.75 6h-9.5l.66 9.805c.061 1.013.598 1.695 1.489 1.695H12.6c.89 0 1.412-.682 1.49-1.695L14.75 6z" fill="#373536"></path><path d="M13.85 3.007H6.196C4.984 2.887 5.021 4.365 5 5h9.992c.024-.62.07-1.873-1.142-1.993z" fill="#373535"></path></svg>
-                </div>
-              </li>
+              <div className="cart-page-sum">Сумма заказа:	<span>{totalPrice} ₽</span></div>
             </ul>
             <div className="cart-page__footer">
               <Link to="/">

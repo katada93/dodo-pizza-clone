@@ -22,7 +22,15 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
   const isPizza = typeof (price) !== 'number'
 
   const addItemToCart = () => {
-    const obj = {id, name, description, price}
+    const obj = {
+      id,
+      name,
+      imageUrl,
+      price: isPizza ? price[activeSize] : price,
+      type: isPizza ? typeNames[activeType] : null,
+      size: isPizza ? sizeNames[activeSize] : null,
+      weight: isPizza ? weights[activeSize] : null
+    }
     dispatch(addToCart(obj))
     handleCloseModal()
   }
@@ -85,7 +93,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
                 </ul>
               </div>
               : null}
-            <button  onClick={addItemToCart} className="modal__button">Добавить в корзину за {isPizza ? price[activeSize] : price} ₽</button>
+            <button onClick={addItemToCart} className="modal__button">Добавить в корзину за {isPizza ? price[activeSize] : price} ₽</button>
           </div>
         </div>
       </Modal>

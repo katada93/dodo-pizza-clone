@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import './Nav.scss'
 import navLogo from '../assets/img/logo-nav.png'
 import emptyCart from '../assets/img/empty-cart.png'
-import { useRef } from 'react';
 
 const Nav = () => {
+  const totalCount = useSelector(({ cart }) => cart.totalCount)
   const refPopup = useRef(null)
   const [showNav, setShowNav] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
@@ -123,7 +124,7 @@ const Nav = () => {
                 <button onMouseEnter={handleShowPopup} onMouseLeave={handleShowCartPopup} className="cart-button">
                   <span className="cart-button__text">Корзина</span>
                   <span className="cart-button__count">
-                    <span className="cart-button__number">7</span>
+                    <span className="cart-button__number">{totalCount}</span>
                     <svg className="cart-button__arrow" width="13" height="11" fill="none"><path d="M1 5.483h11m0 0L7.286 1M12 5.483L7.286 10" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
                   </span>
                 </button>
