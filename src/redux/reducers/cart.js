@@ -1,6 +1,6 @@
 import produce from "immer"
 
-const initialState = {
+const initialState = localStorage.length ? JSON.parse(localStorage.getItem('cart-state')) : {
   items: {},
   totalCount: 0,
   totalPrice: 0

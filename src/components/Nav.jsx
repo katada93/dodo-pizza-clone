@@ -28,12 +28,12 @@ const Nav = () => {
     }
   }
 
-  const handleShowCartPopup = (e) => {
-    e.preventDefault()
-    setTimeout(() => (
-      console.log(123)
-    ), 1000)
-  }
+  // const handleShowCartPopup = (e) => {
+  //   e.preventDefault()
+  //   setTimeout(() => (
+  //     console.log(123)
+  //   ), 1000)
+  // }
 
   useEffect(() => {
     document.addEventListener('scroll', handleShowLogo)
@@ -121,7 +121,7 @@ const Nav = () => {
           <Col lg="4" >
             <div className="nav__cart">
               <Link to="/cart">
-                <button onMouseEnter={handleShowPopup} onMouseLeave={handleShowCartPopup} className="cart-button">
+                <button onMouseEnter={handleShowPopup} className="cart-button">
                   <span className="cart-button__text">Корзина</span>
                   <span className="cart-button__count">
                     <span className="cart-button__number">{totalCount}</span>
