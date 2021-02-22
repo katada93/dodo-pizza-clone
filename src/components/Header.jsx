@@ -101,8 +101,10 @@ const Header = () => {
               : <button onClick={register} type="submit">Зарегистрироваться</button>}
 
             <div>
-              <span>Первый раз на сайте? </span>
-              <span onClick={() => setIsAuth(!isAuth)} className="signin-modal__link">Регистрируйся сейчас!</span>
+              <span>{!isAuth ? 'Первый раз на сайте? ' : 'У вас есть аккаунт? '}</span>
+              <span onClick={() => setIsAuth(!isAuth)} className="signin-modal__link">
+                {!isAuth ? 'Регистрируйся сейчас!' : 'Войти'}
+              </span>
             </div>
           </form>
         </div>
