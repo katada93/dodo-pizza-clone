@@ -1,9 +1,9 @@
+$dodo: #ff6900;
+
 .header {
  padding-top: 20px;
  &__logo {
-   svg {
-     width: 100%;
-   }
+   width: 250px;
  }
 }
 
@@ -16,7 +16,7 @@
   font-size: 1.8rem;
   line-height: 1.1;
   span {
-   color: #ff6900;
+   color: $dodo;
   }
  }
  &-time {
@@ -118,20 +118,26 @@
       cursor: pointer;
       width: 200px;
       font-weight: 500;
-      background-color: #ff6900;
+      background-color: $dodo;
       color: #ffffff;
       padding: 10px 24px;
       font-size: 16px;
       line-height: 24px;
       &:hover {
-        background-color: darken(#ff6900, 5%);
+        background-color: darken($dodo, 5%);
       }
     }
   }
   &__link {
-    color: #ff6900;
+    color: $dodo;
     cursor: pointer;
   }
+}
+
+.header__toggle {
+  border: none;
+  border-width: 5px;
+  color: #000;
 }
 
 @media (max-width: 1199px) {
@@ -173,6 +179,12 @@
     &-time {
       font-size: 1.1rem;
     }
+    &-phone {
+      margin-left: 0;
+    }
+    &-text {
+      display: none;
+    }
     &-numbers {
       a {
         font-size: 1.3rem;
@@ -188,9 +200,24 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header__middle{
-    display: none;
+@media (max-width: 767px) {
+  .header__logo {
+    width: 200px;
+  }
+  .header__login {
+    text-align: left;
+    &-button {
+      margin-left: 0;
+    }
+  }
+  .header__contacts {
+    display: block;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .header__contacts-phone {
+    display: block;
   }
   .signin-modal {
     border-radius: 0;

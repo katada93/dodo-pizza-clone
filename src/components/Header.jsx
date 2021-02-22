@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Container, Row, Col, Modal } from 'react-bootstrap'
+import { Container, Modal, Navbar } from 'react-bootstrap'
 import { auth } from '../firebase'
 import { Link } from 'react-router-dom'
 import star from '../assets/img/star.svg'
@@ -9,7 +9,7 @@ import './Header.scss'
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState(null)
-
+  const [isAuth, setIsAuth] = useState(false)
 
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
@@ -36,9 +36,9 @@ const Header = () => {
     e.preventDefault()
 
     auth.signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
-      .then(user => {
-        handleClose()
+      .then(() => {
         unsubscribe()
+        handleClose()
       })
       .catch(err => alert(err.message))
   }
@@ -59,16 +59,13 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Container fluid="md">
-        <Row className="align-items-center justify-content-md-between">
-          <Col xl="3" lg="3" md="4" sm="5" xs="5">
-            <Link to="/">
-              <div className="header__logo">
-                <img src={logo} alt="Logo" />
-              </div>
-            </Link>
-          </Col>
-          <Col xl="6" lg="5" md="4" className="header__middle">
+      <Navbar expand="md">
+        <Container fliud="md">
+          <Link to="/">
+            <img className="header__logo" src={logo} alt="Logo" />
+          </Link>
+          <Navbar.Toggle className="header__toggle" aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-start">
             <div className="header__contacts">
               <div className="header__contacts-about">
                 <p className="header__contacts-city">Доставка пиццы <span>Грозный</span></p>
@@ -81,33 +78,35 @@ const Header = () => {
                 <p className="header__contacts-text">Звонок бесплатный</p>
               </div>
             </div>
-          </Col>
-          <Col xl="3" lg="4" md="4" sm="7" xs="7">
-            <div className="header__login">
+            <div className="header__login ml-auto mr-md-0">
               <button onClick={handleShow} className="header__login-button" type="button">{user || 'Войти'}</button>
               {!user ? null
                 : <button onClick={signOut} className="header__login-button" type="button">Выйти</button>}
             </div>
-            <Modal show={showModal} onHide={handleClose}>
-              <div className="signin-modal">
-                <div onClick={handleClose} className="signin-modal__close">
-                  <b>&#10006;</b>
-                </div>
-                <form>
-                  <h2>Вход на сайт</h2>
-                  <input ref={emailRef} type="email" placeholder="Email" />
-                  <input ref={passwordRef} type="password" placeholder="Password" />
-                  <button onClick={signIn} type="submit">Войти</button>
-                  <div>
-                    <span>Первый раз на сайте? </span>
-                    <span onClick={register} className="signin-modal__link">Регистрируйся сейчас!</span>
-                  </div>
-                </form>
-              </div>
-            </Modal>
-          </Col>
-        </Row>
-      </Container>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <Modal show={showModal} onHide={handleClose} animation={true}>
+        <div className="signin-modal">
+          <div onClick={handleClose} className="signin-modal__close">
+            <b>&#10006;</b>
+          </div>
+          <form>
+            <h2>{!isAuth ? 'Вход на сайт' : 'Регистрация'}</h2>
+            <input ref={emailRef} type="email" placeholder="Email" />
+            <input ref={passwordRef} type="password" placeholder="Password" />
+            {!isAuth
+              ? <button onClick={signIn} type="submit">Войти</button>
+              : <button onClick={register} type="submit">Зарегистрироваться</button>}
+
+            <div>
+              <span>Первый раз на сайте? </span>
+              <span onClick={() => setIsAuth(!isAuth)} className="signin-modal__link">Регистрируйся сейчас!</span>
+            </div>
+          </form>
+        </div>
+      </Modal>
     </header>
   )
 }

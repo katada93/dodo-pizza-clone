@@ -1,3 +1,5 @@
+$dodo: #ff6900;
+
 .mobile-cart-button {
   font-size: 15px;
   line-height: 1.4;
@@ -5,7 +7,7 @@
   cursor: pointer;
   outline: none;
   font-weight: 500;
-  color: rgb(255, 105, 0);
+  color: $dodo;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -16,7 +18,7 @@
   width: 56px;
   height: 56px;
   border-radius: 28px;
-  background-image: radial-gradient(100% 100% at 50% 0%, rgb(255, 111, 0) 0%, rgb(247, 91, 0) 100%);
+  background-image: radial-gradient(100% 100% at 50% 0%, #ff6f00 0%, #f75b00 100%);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 20px;
   z-index: 3;
 }
@@ -33,8 +35,8 @@
   border-radius: 11px;
   padding-bottom: 2px;
   background: rgb(255, 255, 255);
-  border: 1px solid rgb(255, 105, 0);
-  color: rgb(255, 105, 0);
+  border: 1px solid $dodo;
+  color: $dodo;
 }
 
 @media (min-width: 992px) {

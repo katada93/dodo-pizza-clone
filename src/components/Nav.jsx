@@ -13,11 +13,11 @@ const Nav = () => {
   const [showNav, setShowNav] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
 
-  const handleClosePopup = () => setShowPopup(false);
-  const handleShowPopup = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false)
+  const handleShowPopup = () => setShowPopup(true)
 
   const scrollToTop = () => {
-    scroll.scrollToTop();
+    scroll.scrollToTop()
   };
 
   const handleShowLogo = () => {
@@ -27,13 +27,6 @@ const Nav = () => {
       setShowNav(false)
     }
   }
-
-  // const handleShowCartPopup = (e) => {
-  //   e.preventDefault()
-  //   setTimeout(() => (
-  //     console.log(123)
-  //   ), 1000)
-  // }
 
   useEffect(() => {
     document.addEventListener('scroll', handleShowLogo)

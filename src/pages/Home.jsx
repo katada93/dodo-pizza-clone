@@ -23,6 +23,7 @@ const Home = () => {
         dispatch(setGoods(data))
       })
   }, [dispatch])
+
   return (
     <div className="home-page">
       <Nav />

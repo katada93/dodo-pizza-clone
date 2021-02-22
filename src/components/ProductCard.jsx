@@ -23,7 +23,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
 
   const addItemToCart = () => {
     const obj = {
-      id,
+      id: isPizza ? `${id}-${sizes[activeSize]}-${typeNames[activeType]}` : id,
       name,
       imageUrl,
       price: isPizza ? price[activeSize] : price,
@@ -55,7 +55,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
           </div>
         </div>
       </div>
-      <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal show={showModal} onHide={handleCloseModal} animation={true}>
         <div className="product-modal">
           <div onClick={handleCloseModal} className="product-modal__close">
             <b>&#10006;</b>
