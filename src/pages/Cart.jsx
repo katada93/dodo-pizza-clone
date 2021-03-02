@@ -7,9 +7,9 @@ import { clearCart, minusCartItem, plusCartItem, removeCartItem } from '../redux
 
 const Cart = () => {
   const dispatch = useDispatch()
-  const { items, totalPrice } = useSelector(({ cart }) => cart)
+  const { items: cartItems, totalPrice } = useSelector(({ cart }) => cart)
 
-  const addedItems = Object.keys(items).map(item => items[item]).flat()
+  const items = Object.keys(cartItems).map(item => cartItems[item]).flat()
 
   const onPlusItem = (item) => {
     dispatch(plusCartItem(item))
@@ -33,13 +33,14 @@ const Cart = () => {
     <div className="cart-page">
       <div className="cart-page__header">
         <h1>Корзина</h1>
-        <button onClick={onClearCart}>Очистить корзину</button>
+        {totalPrice !== 0 ? <button onClick={onClearCart}>Очистить корзину</button> : null}
       </div>
-      {totalPrice === 0
+      {!totalPrice
         ? <h3 className="empty-cart-text">Добавьте что-нибудь из меню</h3>
         : <ul className="cart-page__items">
-          {addedItems.map((item, ind) => (
+          {items.map((item, ind) => (
             <CartItem
+              className="cart-page__item"
               key={ind} {...item.item}
               count={item.count}
               totalPrice={item.price}

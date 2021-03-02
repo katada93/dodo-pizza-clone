@@ -5,10 +5,9 @@ import Slider from '../components/Slider'
 import Nav from '../components/Nav'
 import Products from '../components/Products'
 import cartButton from '../assets/img/cart-button.svg'
-import './Home.scss'
 import { setGoods, setLoading } from '../redux/actions/goods'
 import axios from 'axios'
-
+import './Home.scss'
 
 const Home = () => {
   const dispatch = useDispatch()

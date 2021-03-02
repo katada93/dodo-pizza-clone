@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './Nav.scss'
 import navLogo from '../assets/img/logo-nav.png'
-import emptyCart from '../assets/img/empty-cart.png'
+import NavCartPopup from './NavCartPopup';
 
 const Nav = () => {
   const totalCount = useSelector(({ cart }) => cart.totalCount)
   const refPopup = useRef(null)
   const [showNav, setShowNav] = useState(false)
-  const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(true)
 
   const handleClosePopup = () => setShowPopup(false)
   const handleShowPopup = () => setShowPopup(true)
@@ -48,7 +48,6 @@ const Nav = () => {
                 <ScrollLink
                   to="pizzas"
                   smooth={true}
-                  activeClass="active"
                   offset={-170}
                   duration={500}
                   href="#"
@@ -60,7 +59,6 @@ const Nav = () => {
                 <ScrollLink
                   to="snacks"
                   smooth={true}
-                  activeClass="active"
                   offset={-150}
                   duration={500}
                   href="#"
@@ -72,7 +70,6 @@ const Nav = () => {
                 <ScrollLink
                   to="desserts"
                   smooth={true}
-                  activeClass="active"
                   offset={-150}
                   duration={500}
                   href="#"
@@ -84,7 +81,6 @@ const Nav = () => {
                 <ScrollLink
                   to="drinks"
                   smooth={true}
-                  activeClass="active"
                   duration={500}
                   href="#"
                   className="nav__link">
@@ -122,14 +118,7 @@ const Nav = () => {
                   </span>
                 </button>
               </Link>
-              {showPopup &&
-                <div ref={refPopup} onMouseLeave={handleClosePopup} className="nav__cart-popup">
-                  <div className="empty-cart">
-                    <img width="200" src={emptyCart} alt="Empty" />
-                    <p className="empty-cart__oops">Ой, пусто!</p>
-                    <p>Мы всегда доставляем бесплатно, но сумма заказа должна быть от 445 ₽</p>
-                  </div>
-                </div>}
+              {showPopup && <NavCartPopup onClose={handleClosePopup} />}
             </div>
           </Col>
         </Row>

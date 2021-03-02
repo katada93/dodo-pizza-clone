@@ -1,12 +1,14 @@
 import React from 'react'
 
-const CartItem = ({ id, name, imageUrl, type, size, price, count, sizeNumber, totalPrice, plusItem, minusItem, removeItem }) => {
+const CartItem = (props) => {
+  const { id, name, imageUrl, type, size, price, count, sizeNumber, totalPrice, plusItem, minusItem, removeItem, className } = props
+
   const handlePlus = () => plusItem({ id, price, type, size })
   const handleMinus = () => minusItem({ id, price, type, size })
   const handleRemove = () => removeItem({ id, totalPrice, type, size, count })
 
   return (
-    <li className="cart-page__item">
+    <li className={className}>
       <img src={imageUrl} alt="Cart item" />
       <div className="cart-page__item-descr">
         <h3>{name}</h3>

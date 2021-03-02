@@ -7,7 +7,6 @@ import './ProductCard.scss'
 const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, weights }) => {
   const dispatch = useDispatch()
   const sizeNames = ['Маленькая', 'Средняя', 'Большая']
-  const typeNames = ['Традиционное', 'Тонкое']
 
   const [showModal, setShowModal] = useState(false)
   const [activeSize, setActiveSize] = useState(0)
@@ -19,15 +18,15 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
   const handleCloseModal = () => setShowModal(false)
   const handleShowModal = () => setShowModal(true)
 
-  const isPizza = typeof (price) !== 'number'
+  const isPizza = typeof price !== 'number'
 
   const addItemToCart = () => {
     const obj = {
-      id: isPizza ? `${id}-${sizes[activeSize]}-${typeNames[activeType]}` : id,
+      id: isPizza ? `${id}-${sizes[activeSize]}-${types[activeType]}` : id,
       name,
       imageUrl,
       price: isPizza ? price[activeSize] : price,
-      type: isPizza ? typeNames[activeType] : null,
+      type: isPizza ? types[activeType] : null,
       size: isPizza ? sizeNames[activeSize] : null,
       sizeNumber: isPizza ? sizes[activeSize] : null
     }
@@ -55,7 +54,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
           </div>
         </div>
       </div>
-      <Modal show={showModal} onHide={handleCloseModal} animation={true}>
+      <Modal show={showModal} onHide={handleCloseModal}>
         <div className="product-modal">
           <div onClick={handleCloseModal} className="product-modal__close">
             <b>&#10006;</b>
@@ -82,7 +81,7 @@ const ProductCard = ({ id, name, imageUrl, description, price, types, sizes, wei
                   ))}
                 </ul>
                 <ul>
-                  {typeNames.map((type, ind) => (
+                  {types.map((type, ind) => (
                     <li
                       key={type}
                       className={ind === activeType ? 'active' : ''}

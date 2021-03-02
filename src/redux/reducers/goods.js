@@ -15,10 +15,9 @@ const goodsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
-      };
-
+      }
     default:
-      return state;
+      return state
   }
 }
 

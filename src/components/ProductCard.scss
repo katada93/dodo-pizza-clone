@@ -72,6 +72,7 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   background-color: #fff;
+  z-index: 99;
   &__img {
     width: 70%;
   }
@@ -170,6 +171,10 @@
   &:hover {
     background-color: darken(#ff6900, 5%);
   }
+}
+
+.modal-content {
+  border: none;
 }
 
 

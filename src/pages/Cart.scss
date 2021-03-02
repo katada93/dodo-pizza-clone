@@ -2,6 +2,7 @@ $dodo: #ff6900;
 
 .cart-page {
   padding-top: 50px;
+  padding-bottom: 50px;
   max-width: 600px;
   width: 90%;
   margin: auto;
@@ -39,6 +40,7 @@ $dodo: #ff6900;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0;
     img {
       width: 70px;
     }
@@ -46,7 +48,8 @@ $dodo: #ff6900;
       border-top: 1px solid #e2e2e9;
     }
     &-descr {
-      width: 250px;
+      width: 200px;
+      max-width: 250px;
       h3 {
         font-size: 18px;
         line-height: 18px;
@@ -100,8 +103,8 @@ $dodo: #ff6900;
 }
 
 .cart-page-sum {
-  margin-top: 100px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: right;
   font-size: 21px;
   font-weight: 700;
